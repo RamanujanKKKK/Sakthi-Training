@@ -1,0 +1,105 @@
+h3
+{
+    color: #eaf0f6;
+    font-size: larger;
+}
+label{
+    color: #eaf0f6;
+
+}
+
+* {
+    letter-spacing: 0.3px;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    background-color: #eaf0f6;
+}
+
+.btn {
+    border-radius: .2rem;
+    border: 2px solid black;
+}
+
+.btnbg {
+    border: 2px solid black;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+}
+
+.content {
+    width: 45%;
+}
+
+.btngp {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content {
+    height: 75%;
+    background-color: #223343;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.text {
+    display: flex;
+    width: 100%;
+}
+
+.fc {
+    display: flex;
+}
+
+#submit {
+    background-color: #52b06f;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 2px solid white;
+
+}
+
+.pop {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+
+.left {
+    width: 70%;
+}
+
+input {
+   width: 200px;
+}
+
+.valuelist {
+    color: black;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+.optval {
+    margin-top: 0.8rem;
+    background-color: #eaf0f6;
+    margin-right: 0.5rem;
+    padding: 0.2rem;
+    border-radius: 0.4rem;
+    border: 1px solid #223343;;
+
+}
+
+.itemclose {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: red;
+}

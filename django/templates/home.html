@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content%}
+<form method="get" action="" class="m-4">
+    <div class="grid grid-cols-2 gap-4">
+        <div class="mx-4" >
+        {{ form.start_date.label_tag }}
+        {{ form.start_date }}
+        </div>
+        <div class="mx-4">
+            {{ form.end_date.label_tag }}
+            {{ form.end_date }}
+        </div>
+    </div>
+    
+    <div class="mt-4 text-center">
+        <button type="submit" class=" text-white bg-primary py-2 px-4 rounded">Filter</button>
+    </div>
+</form>
+<div class="grid grid-cols-3 gap-6">
+    <div class="max-w-screen-md mx-auto mb-8 ">
+        <div class="mb-8">
+            <h2 class="text-2xl font-semibold mb-4 text-orange-500 text-center">Training Types Details</h2>
+            <canvas id="trainingTypesChart" width="400" height="400"></canvas>
+        </div>
+
+        <div>
+            <h2 class="text-2xl font-semibold mb-4 text-orange-500 text-center">Departments Details</h2>
+            <canvas id="departmentsChart" width="400" height="400"></canvas>
+        </div>
+    </div>
+
+    <div class="ml-auto max-w-screen-md flex items-center">
+        <div class="text-center bg-blue-300 rounded-lg p-6 shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Selected Details</h2>
+            <div id="selectedDetails"></div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var trainingTypesData = {{ training_types|safe }};
+        var departmentsData = {{ departments|safe }};
+
+        var selectedDetailsElement = document.getElementById('selectedDetails');
+
+        var backgroundColors1 = trainingTypesData.map(function () {
+            return 'rgba(' +
+                Math.floor(Math.random() * 256) + ',' +
+                Math.floor(Math.random() * 256) + ',' +
+                Math.floor(Math.random() * 256) + ', 0.7)';
+        });
+
+        var backgroundColors2 = departmentsData.map(function () {
+            return 'rgba(' +
+                Math.floor(Math.random() * 256) + ',' +
+                Math.floor(Math.random() * 256) + ',' +
+                Math.floor(Math.random() * 256) + ', 0.7)';
+        });
+
+        // Training Types Chart
+        var trainingTypesCtx = document.getElementById('trainingTypesChart').getContext('2d');
+        var trainingTypesChart = new Chart(trainingTypesCtx, {
+            type: 'pie',
+            data: {
+                labels: trainingTypesData.map(item => item.name),
+                datasets: [{
+                    data: trainingTypesData.map(item => item.schedule_count),
+                    backgroundColor: backgroundColors1,
+                }],
+            },
+            options: {
+                onClick: function (event, elements) {
+                    handleChartClick(elements, trainingTypesData);
+                }
+            }
+        });
+
+        // Departments Chart
+        var departmentsCtx = document.getElementById('departmentsChart').getContext('2d');
+        var departmentsChart = new Chart(departmentsCtx, {
+            type: 'pie',
+            data: {
+                labels: departmentsData.map(item => item.name),
+                datasets: [{
+                    data: departmentsData.map(item => item.schedule_count),
+                    backgroundColor: backgroundColors2,
+                }],
+            },
+            options: {
+                onClick: function (event, elements) {
+                    handleChartClick(elements, departmentsData);
+                }
+            }
+        });
+    });
+    function handleChartClick(elements, data) {
+        if (elements.length > 0) {
+            var index = elements[0].index;
+            var selectedDetail = data[index];
+            
+            // Check if it's a Topic or Department
+            if ('total_departments' in selectedDetail) {
+                displayTopicDetails(selectedDetail);
+            } else if ('total_employees_dept_trained' in selectedDetail) {
+                displayDepartmentDetails(selectedDetail);
+            }
+            
+            // highlightSelectedElement(elements, data);
+        }
+    }
+
+    function displayTopicDetails(detail) {
+        var selectedDetailsElement = document.getElementById('selectedDetails');
+        selectedDetailsElement.innerHTML = `
+            <p>Training : ${detail.name}</p>
+            <p>No. of Times Conducted: ${detail.schedule_count}</p>
+            <p>Total Departments: ${detail.total_departments}</p>
+            <p>Total Employees Trained: ${detail.total_employees_trained}</p>
+        `;
+    }
+
+    function displayDepartmentDetails(detail) {
+        var selectedDetailsElement = document.getElementById('selectedDetails');
+        selectedDetailsElement.innerHTML = `
+            <p>Department : ${detail.name}</p>
+            <p>Total No. of Different Trainings: ${detail.schedule_count}</p>
+            <p>Total Employees of Dept Trained: ${detail.total_employees_dept_trained}</p>
+        `;
+    }
+
+    function highlightSelectedElement(elements, data) {
+        // Reset all elements to default colors
+        elements.forEach(function (element) {
+            element._model.backgroundColor = getColorByIndex(element._index, data);
+        });
+
+        // Highlight the selected element
+        var selectedElement = elements[0];
+        selectedElement._model.backgroundColor = 'red'; // Change this to your desired highlight color
+
+        // Update the chart
+        selectedElement.chart.update();
+    }
+    function getColorByIndex(index, data) {
+        // Get the default color based on the index
+        return ['#FF6384', '#36A2EB', '#FFCE56'][index % 3];
+    }
+</script>
+{% endblock %}

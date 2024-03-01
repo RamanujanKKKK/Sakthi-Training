@@ -1,0 +1,35 @@
+.drop {
+    display: flex;
+    justify-content: flex-start;
+    background-color: #223343;
+    height: 20px;
+    width: 400px;
+}
+
+.drop>input {
+    width: 30px;
+}
+
+.dropbtn {
+    border-radius: .2rem;
+    background-color: white;
+    color: black;
+    width: 110px;
+    height: 30px;
+}
+
+.dropvalue {
+    padding: 3px;
+    position: absolute;
+    top: 100%;
+    height: 300px;
+    overflow-y: scroll;
+    z-index: 1;
+}
+.ckinput{
+    accent-color: #223343;
+}
+.outer-drop{
+    width: 90%;
+    position: relative;
+}

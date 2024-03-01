@@ -1,0 +1,182 @@
+.maincont {
+  display: flex;
+  width: 100vw;
+}
+
+.leftcont {
+  flex: 1;
+}
+
+.ul {
+  background-color: #223343;
+  color: white;
+  height: 88vh;
+}
+
+.rightcont {
+  flex: 4;
+  overflow-y: scroll;
+  height: 88vh;
+}
+
+.active {
+  background-color: #eaf0f6;
+}
+
+.filterpo {
+  height: 100%;
+  padding: 0.5rem;
+  padding-top: 1rem;
+  display: flex;
+  flex: 1;
+  width: 80vw;
+  justify-content: space-between;
+}
+
+.sub {
+  width: 100px;
+  background-color: #222e3c;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+}
+
+.label {
+  color: white;
+}
+
+.lastfilter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 99vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(0, 0, 0, 0.7);
+}
+
+.con {
+  background-color: #222e3c;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: white;
+  min-width: 50%;
+}
+
+.attend {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  /* padding: 8px; */
+  color: black;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+  background-color: #ddd;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #223343;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.filterbutton {
+  background-color: #223343;
+  color: white;
+  padding: 0.5rem;
+  /* width: 17.8rem; */
+}
+
+.deptna {
+  padding: 0.5rem;
+  font-size: large;
+}
+
+.deptli {
+  padding-top: 1rem;
+  padding-left: 0.5rem;
+  cursor: pointer;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #223343;
+
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  height: 50%;
+  margin-bottom: 10px;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover,
+.dropbtn:focus {
+  background-color: #2980b9;
+  transition: all 200ms ease;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+  display: block;
+}
+
+.finalpop {
+  position: absolute;
+  top: 11%;
+  width: 80%;
+  height: 89vh;
+  background-color: rgba(0, 0, 0, 0.865);
+  
+}

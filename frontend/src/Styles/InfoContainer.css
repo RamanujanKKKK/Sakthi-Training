@@ -1,0 +1,115 @@
+.info-container {
+    margin: 2%;
+    height: 80%;
+    width: 40%;
+    background-color: #222e3c;
+    color: white;
+    border-radius: 20px;
+}
+
+.visualize-data {
+    display: flex;
+    height: 10%;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 5%;
+    font-size: x-large;
+}
+
+.content-container {
+    height: 80%;
+    width: 100%;
+}
+
+.func-buttons {
+    height: 10%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 5%;
+}
+
+.expand-btn {
+    background-color: #8796a4;
+    width: 25%;
+    height: 60%;
+    border: 0px;
+    border-radius: 10px;
+    z-index: 0;
+    transition: all 150ms ease;
+}
+.expand-btn:hover{
+    background-color: #c6cfd8;
+}
+
+
+.graph1 {
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.position-legend {
+    position: relative;
+    top: 50%;
+    left: 50%;
+}
+
+.expand-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.info-left {
+    height: 100%;
+    width: 60%;
+    margin: 0 1% 0 2%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.chart-container {
+    width: 48%;
+    height: 48%;
+    margin: 1%;
+    border-radius: 0.4rem;
+}
+
+.info-right {
+    height: 100%;
+    width: 40%;
+    background-color: #ebf3f4;
+    margin: 0 2% 0 1%;
+    overflow-y: scroll;
+    border-radius: 0.3rem;
+    overflow-y: scroll;
+}
+.custom-tooltip{
+    background-color: white;
+    color: black;
+}
+
+.filter-info{
+    display: flex;
+    align-items: flex-start;
+}
+.heading-infopage{
+    color: #222e3c;
+    font-size: larger;
+    margin:2%
+}
+.basic-info{
+    margin-right: auto;
+    margin-left: 40px;
+    margin-top: 10px;
+}
+.gen-detail{
+    font-size: x-large;
+}
+.detail{
+    font-size: large;
+    margin-top:5px;
+}
