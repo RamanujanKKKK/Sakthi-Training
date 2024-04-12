@@ -1,0 +1,139 @@
+.tabl {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#ta {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  /* width: 100%; */
+}
+
+.tabl-2 {
+  all: revert;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  /* width: 100%; */
+}
+
+.tabl-2 td,
+.tabl-2 th {
+  border: 1px solid #ddd;
+  /* padding: 8px; */
+  color: black;
+  /* width: 100px; */
+}
+
+.tabl,
+.tabl-1,
+.tabl-2,
+td,
+.tabl th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  color: black;
+  width: 100px;
+  color: white;
+
+}
+
+#ta td {
+  color: white;
+}
+
+#ta tr:nth-child(even) {
+  background-color: #f2f2f2;
+
+}
+
+.tabl tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.tabl-2 tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.tabl-1 tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#ta tr:hover {
+  background-color: #ddd;
+}
+
+.tabl tr:hover {
+  background-color: #ddd;
+}
+
+.tabl-1 tr:hover {
+  background-color: #ddd;
+}
+
+.tabl-2 tr:hover {
+  background-color: #ddd;
+}
+
+#thh {
+  padding: 0px;
+}
+
+#ta th {
+  /* padding-top: 12px; */
+  /* padding-bottom: 12px; */
+  text-align: left;
+  background-color: #223343;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.tabl th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #223343;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.tabl-1 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #223343;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+.tabl-2 th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #223343;
+  color: white;
+  margin-bottom: 2rem;
+}
+
+#wfull {
+  width: 100%;
+  /* height: 10px; */
+}
+
+#bc,
+#bcc {
+  color: black;
+}
+
+.moree {
+  position: absolute;
+  right: 5%;
+}
+
+.finaldiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-left: -15rem;
+}
