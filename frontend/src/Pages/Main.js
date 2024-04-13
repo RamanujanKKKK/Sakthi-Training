@@ -41,7 +41,7 @@ export const Main = () => {
   };
 
   useEffect(() => {
-    axios.get("http://13.210.37.130:8001/").then((response) => {
+    axios.get("http://"+window.location.hostname+":8001").then((response) => {
       dataH(response.data);
     });
     dhh(new DataHandler(dataH));
