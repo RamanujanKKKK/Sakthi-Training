@@ -88,6 +88,7 @@ export const Main = () => {
                   <InfoContainer
                     className="info-container"
                     isVisible={isPopupVisible}
+                    isPopupOpen={isPopupOpen}
                     onMouseEnter={handleMouseEnter}
                     onMouseLeave={handleMouseLeave}
                     data={data}

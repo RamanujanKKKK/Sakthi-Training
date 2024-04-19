@@ -67,10 +67,10 @@ const Filter = ( props) => {
   }
 
   return (
-    <div className="popup">
+    <div className="popup" >
       <div className="popup-content">
         <div className='main-2'>
-          <div className='content'>
+          <div className='content' style={{ZIndex:"224"}}>
             <div className='text'>
               <div>
             <button  id="close" onClick={onClose} style={{color:"white"}}>Close</button>
