@@ -36,7 +36,7 @@ const Add_Filter = ({ setIsAttendenceOpen, name, setName, id, setId, min, setMin
                             <input  onChange={(e)=>(e.target.value==""?setMax(10000):setMax(parseInt(e.target.value)))}  type="number" placeholder="Enter maximum attendence" />
                         </div>
                     </div>
-                    <button className='sub' onClick={() => setIsAttendenceOpen(true)}>Apply</button>
+                    {/* <button className='sub' onClick={() => setIsAttendenceOpen(true)}>Apply</button> */}
                 </div>
             )}
         </div>

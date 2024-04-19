@@ -198,7 +198,7 @@ const Additional_Filter = (props) => {
                           <>
                             <td>
                               {header === "document" ? (
-                                <a href={trainingData[header]}>Click here</a>
+                                <a href={"http://"+window.location.hostname+":8000/media/"+trainingData[header]}>Click here</a>
                               ) : header == "training" ? (
                                 <>
                                   {trainingData[header].map((train, index) => (

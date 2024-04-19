@@ -20,10 +20,15 @@ const ScheduleTable = (props) => {
   })
 
 
+  let columnHeaders;
+  if(data.length==0){
+    columnHeaders = ["No Data Available"]
+  }
+  else{
 
+    columnHeaders = Object.keys(data[0]);
+  }
 
-
-  const columnHeaders = Object.keys(data[0]);
 
   return (
     <div className='needbot'>
@@ -42,7 +47,7 @@ const ScheduleTable = (props) => {
               return <tr>
                 {columnHeaders.map((header) => (
                   <>
-                    <td>{header === 'document' ? <a href={trainingData[header]}>Click here</a> : trainingData[header]}</td>
+                    <td>{header === 'document' ? <a href={"http://"+window.location.hostname+":8000/media/"+trainingData[header]}>Click here</a> : trainingData[header]}</td>
                   </>
                 ))}
               </tr>

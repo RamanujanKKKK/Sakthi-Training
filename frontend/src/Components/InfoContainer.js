@@ -484,6 +484,7 @@ export const InfoContainer = (props) => {
             Download
           </button>
         )}
+        {!props.isPopupOpen && 
         <button
           className="expand-btn"
           style={{ width: isExpanded ? "10%" : null, zIndex: "120" }}
@@ -491,6 +492,7 @@ export const InfoContainer = (props) => {
         >
           {isExpanded ? "Less" : "More"}
         </button>
+        }
       </div>
       {isPopupOpen && (
         <div className="popu">

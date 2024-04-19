@@ -24,7 +24,7 @@ const EmpTable = (props)=>{
                             <td>{
                             
                             
-                            header === 'document' ? <a href={trainingData[header]}>Click here</a> :(header=='training'?<>{trainingData[header].map((train,index)=><div>{index+1+") "+props.dataHandler.getDataById(props.data.training,train).name}</div>)}</>:trainingData[header])}</td>
+                            header === 'document' ? <a href={"http://"+window.location.hostname+":8000/media/"+trainingData[header]}>Click here</a> :(header=='training'?<>{trainingData[header].map((train,index)=><div>{index+1+") "+props.dataHandler.getDataById(props.data.training,train).name}</div>)}</>:trainingData[header])}</td>
                         </>
                     ))}
                     <td><a onClick={() => { setShowSchedule(element.id); console.log(element); openPopup() }}>&rarr;</a></td>
