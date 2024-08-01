@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+Training Types 
+{% endblock title %}
+
+{% block content %}
+
+    <h1 class="text-2xl font-bold text-center mt-2 text-orange-500">Training Type Schedule Pie Chart</h1>
+
+    <nav
+        class="w-full rounded-md bg-neutral-100 px-5 py-3 dark:bg-neutral-600 m-4">
+        <ol class="list-reset flex">
+            <li>
+                <a
+                href="{% url 'training' %}"
+                class="text-primary transition duration-150 ease-in-out hover:text-primary-600 focus:text-primary-600 active:text-primary-700 dark:text-primary-400 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+                >Training</a
+                >
+            </li>
+            {% comment %} <li>
+                <span class="mx-2 text-neutral-500 dark:text-neutral-300">/</span>
+            </li> {% endcomment %}
+            {% comment %} <li class="text-neutral-500 dark:text-neutral-300">{{department.slug}}</li> {% endcomment %}
+        </ol>
+    </nav>
+
+    <form method="get" action="" >
+        <div class="grid grid-cols-2 gap-4">
+            <div class="mx-4" >
+            {{ form.start_date.label_tag }}
+            {{ form.start_date }}
+            </div>
+            <div class="mx-4">
+                {{ form.end_date.label_tag }}
+                {{ form.end_date }}
+            </div>
+        </div>
+        
+        <div class="mt-4 text-center">
+            <button type="submit" class=" text-white bg-primary py-2 px-4 rounded">Filter</button>
+        </div>
+    </form>
+
+    <div class="flex m-4">
+        <div class="w-1/2 p-8 bg-gray-200">
+            <canvas id="trainingChart" class="max-w w-full"></canvas>
+        </div>
+
+        <div class="w-1/2 p-8 bg-gray-300">
+            <h2 class="text-2xl font-bold mb-4">Trainings</h2>
+             <ul>
+                {% for training in training_types %}
+                    <li class="m-4">
+                        <a
+                            class="inline-block rounded w-full text-center bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                            data-te-collapse-init
+                            data-te-ripple-init
+                            data-te-ripple-color="light"
+                            href="#collapse{{training.name__slug}}"
+                            role="button"
+                            aria-expanded="false"
+                            aria-controls="collapse{{training.name__slug}}">
+                            {{training.name__name}}
+                            </a>
+                            <div class="!visible hidden" id="collapse{{training.name__slug}}" data-te-collapse-item>
+                                <div
+                                class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 dark:text-neutral-50">
+                                <ul>
+                                    <p class="text-black"><b>Training Conducted :</b> {{training.count}} times</p>
+                                        <br>
+                                        <ol class="list-decimal">
+                                            {% load training_tags %}
+                                        <p class="font-bold text-black">Departments : </p>
+                                        {% get_training_departments training.name as particular_training %}
+                                        {% for d in particular_training.department.all %}
+                                                <li class="text-black mx-5">{{d}}</li>
+                                        {% endfor %}
+                                        </ol>
+                                </ul>
+                                </div>
+                            </div>
+                        
+                    </li>
+                {% empty %}
+                <p class="font-bold text-xl">No Trainings Scheduled During This Duration!</p>
+                {% endfor %}
+            </ul> 
+        </div>
+    </div>
+
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('trainingChart').getContext('2d');
+            var trainingTopics = {{ training_type|safe }};
+        
+            var backgroundColors = trainingTopics.map(function () {
+                return 'rgba(' +
+                    Math.floor(Math.random() * 256) + ',' +
+                    Math.floor(Math.random() * 256) + ',' +
+                    Math.floor(Math.random() * 256) + ', 0.7)';
+            });
+        
+            var myChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: trainingTopics.map(function (training) { return training.name__name; }),
+                    datasets: [{
+                        data: trainingTopics.map(function (training) { return training.count; }),
+                        backgroundColor: backgroundColors,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    onClick: function(event, elements) {
+                        if (elements.length > 0) {
+                            var clickedIndex = elements[0].index;
+                            var trainingId = trainingTopics[clickedIndex].name__slug;
+                            // var departmentId = `{{department.name__slug}}`;
+                            window.location.href = `/training/${trainingId}/?start_date={{start_date}}&end_date={{end_date}}`;
+                        }
+                    }
+                }
+            });
+        });
+        
+    </script>
+{% endblock %}
